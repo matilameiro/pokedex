@@ -1,9 +1,14 @@
-import './App.css';
+import HeaderComponent from './components/Head/HeaderComponent';
 import HomeView from './views/home/HomeView';
+
+import './App.scss';
 
 function App() {
   return (
-    <HomeView></HomeView>
+    <>
+      <HeaderComponent></HeaderComponent>
+      <HomeView></HomeView>
+    </>
   );
 }
 

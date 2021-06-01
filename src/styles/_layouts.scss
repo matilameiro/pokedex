@@ -1,0 +1,45 @@
+// Incluimos el layout de las clases principales
+
+/******* Responsive *******/
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) { 
+    .main-layout{
+        width: 95%!important;
+        margin: 0 auto;
+    }
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767px) {
+    .main-layout{
+        width: 90% !important;
+        margin: 0 auto;
+    }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991px) {
+    .main-layout{
+        width: 85% !important;
+        margin: 0 auto;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) {
+    .main-layout{
+        width: 70.83% !important;
+        margin: 0 auto;
+    }
+
+  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .main-layout{
+        width: 70.83% !important;
+        margin: 0 auto;
+    }
+  }
