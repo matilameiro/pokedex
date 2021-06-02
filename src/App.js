@@ -1,4 +1,4 @@
-import HeaderComponent from './components/Head/HeaderComponent';
+import HeaderComponent from './components/HeaderComponent/HeaderComponent';
 import HomeView from './views/home/HomeView';
 
 import './App.scss';
