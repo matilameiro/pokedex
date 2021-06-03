@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import PokemonCardComponent from '../PokemonCardComponent/PokemonCardComponent';
 
 const PokemonListComponent = () => {
   const [page, setPage] = useState(1);
@@ -19,6 +20,7 @@ const PokemonListComponent = () => {
         image: data.sprites['front_default'],
         type: data.types.map((type) => type.type.name)
       }));
+      console.log(pokemons)
       setPokemonList(pokemons);
     })
   }, [page])
@@ -26,22 +28,18 @@ const PokemonListComponent = () => {
   return (
     <div style={{
       display:'grid',
-      gridTemplateColumns:'1rem auto 1rem',
-      gridGap: '1rem',
-      height: '80vh'
+      gridTemplateColumns:'2rem auto 2rem',
+      gridGap: '1rem'
     }}>
-      <div style={{justifySelf:'flex-start'}}>{'<'}</div>
-      <div style={{justifySelf:'stretch', display: 'flex', justifyContent: 'space-around', width: '100%'}}>
+      <div style={{ justifySelf: 'flex-start', alignSelf: 'center', fontSize: '2rem', border:'1px solid', borderRadius:'100%'}}>{'<'}</div>
+      <div style={{justifySelf:'stretch', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', width: '100%'}}>
         {
           pokemonList.map((pokemon) => (
-            <div key={pokemon.id}>
-              <h5>{pokemon.name}</h5>
-              <h5>{pokemon.type}</h5>
-            </div>
+            <PokemonCardComponent key={pokemon.id} title={pokemon.name} imgUrl={pokemon.image} body={pokemon.type}></PokemonCardComponent>
           ))
         }
       </div>
-      <div style={{justifySelf:'flex-end'}}>{'>'}</div>
+      <div style={{ justifySelf: 'flex-end', alignSelf: 'center', fontSize: '2rem'}}>{'>'}</div>
     </div>
   )
 }
