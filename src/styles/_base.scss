@@ -102,15 +102,23 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
   color: $info-color;
 }
 
-.primary-button-full {
-  margin-bottom: 1rem;
-  // background: $green-water-color !important ;
-  background: #4EE06E !important ;
-  // color: whitesmoke;
-  letter-spacing: 1px;
+.primary-button {
+  margin: 1rem;
+  padding: 1rem 1.5rem;
+  border-color: whitesmoke;
+  border-radius: 5px;
+  background: lightcoral !important ;
+  color: whitesmoke;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  width: 100%;
-      
+  min-width: 18rem;
+  cursor: pointer;
+  transition: .5s;
+  animation: ease-in;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .full-button {

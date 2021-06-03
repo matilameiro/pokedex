@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import PokemonCardComponent from '../PokemonCardComponent/PokemonCardComponent';
 
+import './PokemonListComponent.scss';
+import ModalComponent from '../ModalComponent/ModalComponent';
+
 const PokemonListComponent = () => {
   const [page, setPage] = useState(1);
   const [pokemonList, setPokemonList] = useState([]);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const promises = [];
@@ -14,6 +18,7 @@ const PokemonListComponent = () => {
     }
 
     Promise.all(promises).then((result) => {
+      console.log(result)
       const pokemons = result.map((data) => ({
         id: data.id,
         name: data.name,
@@ -25,13 +30,14 @@ const PokemonListComponent = () => {
     })
   }, [page])
 
+  const closeModalHandler = () => setShow(false);
+
   return (
     <div style={{
-      display:'grid',
-      gridTemplateColumns:'2rem auto 2rem',
-      gridGap: '1rem'
+      display:'display',
+      flexDirection: 'column'
     }}>
-      <div style={{ justifySelf: 'flex-start', alignSelf: 'center', fontSize: '2rem', border:'1px solid', borderRadius:'100%'}}>{'<'}</div>
+      {/* <div style={{ justifySelf: 'flex-start', alignSelf: 'center', fontSize: '2rem', border:'1px solid', borderRadius:'100%'}}>{'<'}</div> */}
       <div style={{justifySelf:'stretch', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', width: '100%'}}>
         {
           pokemonList.map((pokemon) => (
@@ -39,7 +45,16 @@ const PokemonListComponent = () => {
           ))
         }
       </div>
-      <div style={{ justifySelf: 'flex-end', alignSelf: 'center', fontSize: '2rem'}}>{'>'}</div>
+      {/* <div style={{ justifySelf: 'flex-end', alignSelf: 'center', fontSize: '2rem'}}>{'>'}</div> */}
+
+      <div style = {{display:'flex', justifyContent: 'center', margin: '1rem'}}>
+        <button className='primary-button'>Atrás</button>
+        <button onClick={() => setShow(true)} className='primary-button'>Siguiente</button>
+      </div>
+
+      <ModalComponent title='My modal' show={show} close={closeModalHandler}>
+        <p>This is modal body</p>
+      </ModalComponent>
     </div>
   )
 }
