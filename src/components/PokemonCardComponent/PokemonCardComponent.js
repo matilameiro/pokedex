@@ -1,9 +1,9 @@
 import React from 'react'
 import './PokemonCardComponent.scss'
 
-const PokemonCardComponent = ({title, imgUrl, body}) => {
+const PokemonCardComponent = ({ title, imgUrl, body, click }) => {
   return (
-    <div className="card-container">
+    <div className="card-container" onClick={click}>
       <div className="image-container">
         <img src={imgUrl} alt={title}></img> 
       </div>

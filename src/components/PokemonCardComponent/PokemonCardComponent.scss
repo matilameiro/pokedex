@@ -1,4 +1,10 @@
+@import '../../styles/base';
+@import '../../styles/animations';
+
 .card-container {
+  background: white;
+  border: 1px solid white;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +13,12 @@
   transition: 0.3s;
   animation: ease-in;
   margin: 1rem;
+  cursor: pointer;
+
+  -webkit-animation: fadein .5s ease-in-out;  /* Safari 4+ */
+  -moz-animation   : fadein .5s ease-in-out;  /* Fx 5+ */
+  -o-animation     : fadein .5s ease-in-out;  /* Opera 12+ */
+  animation        : fadein .5s ease-in-out;  /* IE 10+, Fx 29+ */
 
   &:hover {
     transform: scale(1.1);

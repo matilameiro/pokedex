@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import PokemonListComponent from '../../components/PokemonListComponent/PokemonListComponent'
+import React, { useState } from 'react'
+import PokemonListComponent from '../../components/PokemonListComponent/PokemonListComponent';
+
+import './HomeView.scss'
 
 const HomeView = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -7,7 +9,7 @@ const HomeView = () => {
   const [error, setError] = useState(false);
 
   return (
-    <div style={{padding: '1rem 2rem'}}>
+    <div className="home-view">
       <PokemonListComponent></PokemonListComponent>
     </div>
   )
