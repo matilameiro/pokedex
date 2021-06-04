@@ -3,19 +3,20 @@ import PokemonCardComponent from '../PokemonCardComponent/PokemonCardComponent';
 import ModalComponent from '../ModalComponent/ModalComponent';
 
 import './PokemonListComponent.scss';
+import PokemonDetailsComponent from '../PokemonDetailsComponent/PokemonDetailsComponent';
+import { getPokemon } from '../../services/PokemonService';
 
 const PokemonListComponent = () => {
   const [page, setPage] = useState(0);
   const [pokemonList, setPokemonList] = useState([]);
   const [show, setShow] = useState(false);
+  const [pokemonSelected, setPokemonSelected] = useState(null)
 
   useEffect(() => {
     const promises = [];
 
     for (let i = (page * 5) + 1; i <= (page * 5) + 5 ; i++) {
-      console.log(i);
-      const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-      promises.push(fetch(url).then((res) => res.json()));
+      promises.push(getPokemon(i));
     }
 
     Promise.all(promises).then((result) => {
@@ -31,31 +32,33 @@ const PokemonListComponent = () => {
 
   const closeModalHandler = () => setShow(false);
 
+  const showPokemonDetail = (pokemon) => {
+    setPokemonSelected(pokemon);
+    setShow(true);
+  }
+
   return (
     <div className="pokemon-list">
-      {/* <div style={{ justifySelf: 'flex-start', alignSelf: 'center', fontSize: '2rem', border:'1px solid', borderRadius:'100%'}}>{'<'}</div> */}
       <div className="pokemon-list__items">
         {
           pokemonList.map((pokemon) => (
             <PokemonCardComponent 
               key={pokemon.id} 
-              title={pokemon.name} 
-              imgUrl={pokemon.image} 
-              body={pokemon.type}
-              click={() => setShow(true)}>
+              pokemon={pokemon}
+              showDetail={showPokemonDetail}>
             </PokemonCardComponent>
           ))
         }
       </div>
-      {/* <div style={{ justifySelf: 'flex-end', alignSelf: 'center', fontSize: '2rem'}}>{'>'}</div> */}
-
       <div className= "pokemon-list__actions">
         <button onClick={() => page > 0 ? setPage(page - 1) : null} className='primary-button'>Atrás</button>
         <button onClick={() => page < 225 ? setPage(page + 1) : null} className='primary-button'>Siguiente</button>
       </div>
 
-      <ModalComponent title='My modal' show={show} close={closeModalHandler}>
-        <p>This is modal body</p>
+      <ModalComponent title="Detalles del pokemon" show={show} close={closeModalHandler}>
+        { show && pokemonSelected && 
+          <PokemonDetailsComponent images={pokemonSelected.image} name={pokemonSelected.name} type={pokemonSelected.type}></PokemonDetailsComponent>
+        }
       </ModalComponent>
     </div>
   )

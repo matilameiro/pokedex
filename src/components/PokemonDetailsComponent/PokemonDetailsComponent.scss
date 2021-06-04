@@ -1,0 +1,46 @@
+.pokemon-details {
+  width: 60rem;
+  height: 40rem;
+  display: flex;
+
+  &__images {
+    flex: 1;
+    border-right: 1px solid black;
+    
+    image {
+      width: 14rem;
+      // height: 10rem;
+    }
+
+  }
+
+  &__description {
+    flex: 1;
+  }
+}
+
+// .wrapper {
+//   width: 60rem;
+//   height: 40rem;
+//   background: gray;
+//   position: relative;
+// }
+// .background-shape {
+//   background: orange;
+//   width: 100%;
+//   height: 200px;
+//   -ms-transform: skewY(-20deg);
+//   -webkit-transform: skewY(-20deg);
+//   transform: skewY(-20deg);
+//   border-radius: 30px;
+//   position: absolute;
+//   top: 0px;
+//   left: 50px;
+// }
+// .content {
+//   color: white;
+//   position: absolute;
+//   top: 120px;
+//   left: 30%;
+//   z-index: 10;
+// }

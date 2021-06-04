@@ -1,17 +1,22 @@
 import React from 'react'
 import './PokemonCardComponent.scss'
 
-const PokemonCardComponent = ({ title, imgUrl, body, click }) => {
+const PokemonCardComponent = ({ pokemon, showDetail }) => {
+  const handlerClikCard = (e) => {
+    e.preventDefault();
+    showDetail(pokemon)
+  }
+
   return (
-    <div className="card-container" onClick={click}>
+    <div className="card-container" onClick={handlerClikCard}>
       <div className="image-container">
-        <img src={imgUrl} alt={title}></img> 
+        <img src={pokemon.image} alt={pokemon.name}></img> 
       </div>
       <div className="card-title">
-        <h3>{ title }</h3>
+        <h3>{ pokemon.name }</h3>
       </div>
       <div className="card-body">
-        <p>{'type: ' + body.join(',')}</p>
+        <p>{'type: ' + pokemon.type.join(',')}</p>
       </div>
     </div>
   )

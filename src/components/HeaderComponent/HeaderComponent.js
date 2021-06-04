@@ -4,12 +4,13 @@ const HeaderComponent = () => {
   return (
     <div style={{
       alignItems: 'center',
-      backgroundColor: 'red',
+      backgroundColor: '#DB092B',
       boxShadow: '0px 5px 20px -10px rgba(0,0,0,0.75)',
       display: 'flex', 
       justifyContent: 'space-between', 
       height: '5rem', 
-      padding: '0 2rem'
+      padding: '0 2rem',
+      borderBottom: '7px solid black'
     }}>
       <div style={{ justifySelf: 'flex-start', color: 'whitesmoke', fontSize: '2rem', fontWeight: '600', letterSpacing: '3px' }}>
         POKEDEX

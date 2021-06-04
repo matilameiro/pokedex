@@ -4,9 +4,9 @@ import PokemonListComponent from '../../components/PokemonListComponent/PokemonL
 import './HomeView.scss'
 
 const HomeView = () => {
-  const [pokemons, setPokemons] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // const [pokemons, setPokemons] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(false);
 
   return (
     <div className="home-view">
