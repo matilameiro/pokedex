@@ -14,12 +14,32 @@
   -moz-animation   : fadein .3s ease-in-out;  /* Fx 5+ */
   -o-animation     : fadein .3s ease-in-out;  /* Opera 12+ */
   animation        : fadein .3s ease-in-out;  /* IE 10+, Fx 29+ */
-
-
+  
+  
   &__content {
     background-color: #fff;
     min-width: 30rem ;
     transition: all 0.3 ease-in-out;
+    border-radius: 15px;
+    position: relative;
+
+    &__close-btn {
+      position: absolute;
+      right: 0;
+      top: 0; 
+      color: whitesmoke; 
+      font-size: 2rem; 
+      font-weight: 600;
+      padding: 1rem;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all .1s ease-in-out;
+      
+      &:hover {
+        transform: scale(1.1);
+      }
+      
+    }
     
     &__header {
       background: #2c2c2c;
@@ -28,6 +48,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-radius: 15px 15px 0 0;
       
       span {
         padding: 10px;
@@ -35,10 +56,6 @@
     }
     
     &__body {
-      // padding: 10px;
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
-
       p {
         font-size: 1rem;
         background: #eee;
@@ -48,8 +65,9 @@
       }
     }
 
-    &__footer button {
-      padding: 10px;
+    &__footer {  
+      display: flex;
+      justify-content: center;
     }
   }
 

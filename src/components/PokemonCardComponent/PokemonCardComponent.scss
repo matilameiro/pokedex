@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 .card-container {
   background: white;
   border: 1px solid white;
@@ -5,42 +7,48 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   overflow: hidden;
   box-shadow: 0px 5px 20px -10px;
   transition: 0.3s;
   animation: ease-in;
   margin: 1rem;
   cursor: pointer;
+  padding: 1rem 2.5rem;
+  height: 30rem;
+  width: 22rem;
 
   -webkit-animation: fadein .5s ease-in-out;  /* Safari 4+ */
   -moz-animation   : fadein .5s ease-in-out;  /* Fx 5+ */
   -o-animation     : fadein .5s ease-in-out;  /* Opera 12+ */
   animation        : fadein .5s ease-in-out;  /* IE 10+, Fx 29+ */
 
+  &__image img {
+    overflow: hidden;
+    width: 18rem;
+    height: 22rem;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &__title {
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+  }
+
   &:hover {
     transform: scale(1.1);
   }
-}
 
-.image-container img {
-  overflow: hidden;
-  height: 200px;
-}
-
-.card-content {
-  margin: 1rem;
-  margin-top: 0.3rem;
-}
-
-.card-body {
-  margin-bottom: 1rem;
-}
-
-h3,p {
-  margin: 0;
-  padding: 0;
-}
-
-.card-title {
-  margin-bottom: 0.5rem;
+  @include responsive(tablet) {
+    width: 90%;
+  }
+  
+  @include responsive(celular) {
+    width: 90%;
+  }
 }

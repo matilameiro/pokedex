@@ -1,60 +1,46 @@
-/**** App roots ****/
-$assets-root: '~/assets/';
-$images-root: $assets-root + 'img/';
-$fonts-root: $assets-root + 'fonts/';
-
 /**** General ****/
 $font-family: 'Roboto', sans-serif;
 
 /**** Colors ****/
-$primary-color   : #DB092B;
-$success-color   : #28a745;
-$warning-color   : #f79a17;
-$danger-color    : #ff0000;
-$info-color      : #bedbf9;
-$body-bg-color: #EEEEEE;
-$text-color: #242424;
+$primary-color    : #DB092B;
+$success-color    : #28a745;
+$warning-color    : #f79a17;
+$danger-color     : #ff0000;
+$info-color       : #bedbf9;
+$body-bg-color    : #EEEEEE;
+$text-color       : #242424;
 $green-water-color: #85F4BF;
 
 /**** Social colors ****/
-$facebook-color: #3b5998;
-$whatsapp-color: #25d366;
-$twitter-color: #55acee;
-$instagram-color: #8a3ab9;
-$pinterest-color: #c92228;
-$google-color: #dd4b39;
-$linkedin-color: #0177B5;
-$github-color: #6b6b6b;
+$facebook-color     : #3b5998;
+$whatsapp-color     : #25d366;
+$twitter-color      : #55acee;
+$instagram-color    : #8a3ab9;
+$pinterest-color    : #c92228;
+$google-color       : #dd4b39;
+$linkedin-color     : #0177B5;
+$github-color       : #6b6b6b;
 $stackoverflow-color: #2F96E8;
-$dribble-color: #F26798;
-$behace-color: #0093FA;
+$dribble-color      : #F26798;
+$behace-color       : #0093FA;
 
 /**** grey ****/
-$grey: #555;
-$color-grey:#756a6a;
-$grey-dark: #292b2c;
-$grey-light: #ccc;
-$grey-lighter: #eceeef;
-$color-light-grey: rgba(128, 128, 128, .05);
+$grey              : #555;
+$color-grey        : #756a6a;
+$grey-dark         : #292b2c;
+$grey-light        : #ccc;
+$grey-lighter      : #eceeef;
+$color-light-grey  : rgba(128, 128, 128, .05);
 $color-light-grey-1: rgba(128, 128, 128, .10);
 $color-light-grey-2: rgba(128, 128, 128, .15);
 
-/**** Sidebar ****/
-$sidebar-width: 230px;
-
-/**** Navbar ****/
-$navbar-text-color: #ffffff;
-$navbar-height: 4.3rem;
-
 /**** Fonts ****/
-$font-thin: 100;
-$font-light: 300;
-$font-normal: 400;
-$font-bold: 500;
-$font-bolder: 700;
+$font-thin     : 100;
+$font-light    : 300;
+$font-normal   : 400;
+$font-bold     : 500;
+$font-bolder   : 700;
 $font-ultraBold: 900;
 
 // SOMBRAS
-// $shadow-1:0 1px 3px 0 rgba(0, 0, 0, 0.33);
-$shadow-1-hover:0 .35rem 1.5rem rgba(0, 0, 0,.3); 
-$shadow-1: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

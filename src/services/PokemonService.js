@@ -5,6 +5,8 @@ export const getPokemon = async (id) => {
     const url = API_BASEPATH + 'pokemon/' + id;
     return await fetch(url).then((res) => res.json());
   } catch (err) {
-    return Promise.reject(err);
+    // Si tenemos un interceptor no debería llegar acá y se podría manejar el error por ahí.
+    // Sino se podria propagar el error al componente y realizar algún manejo ahí mismo o manejarlo acá.
+    console.log(err);
   }
 }

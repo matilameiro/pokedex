@@ -9,14 +9,13 @@ const PokemonCardComponent = ({ pokemon, showDetail }) => {
 
   return (
     <div className="card-container" onClick={handlerClikCard}>
-      <div className="image-container">
-        <img src={pokemon.image} alt={pokemon.name}></img> 
+      <div className="card-container__image">
+        <img src={pokemon.image_dream_world ? pokemon.image_dream_world : pokemon.image_default} alt={pokemon.name}></img>
       </div>
-      <div className="card-title">
-        <h3>{ pokemon.name }</h3>
-      </div>
-      <div className="card-body">
-        <p>{'type: ' + pokemon.type.join(',')}</p>
+      <div className="card-container__description">
+        <div className="card-container__description__title">
+          <h2><strong>{pokemon.name}</strong></h2>
+        </div>
       </div>
     </div>
   )

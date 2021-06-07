@@ -1,0 +1,38 @@
+.header {
+  align-items: center;
+  background-color: #DB092B;
+  
+  display: flex; 
+  justify-content: space-between; 
+  height: 5rem; 
+  padding: 3rem 2rem;
+  border-bottom: 7px solid black;
+
+  &__title {
+    justify-self: flex-start;
+    color: whitesmoke;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    img {
+      height: 10rem;
+      width: 10rem;
+    }
+
+    h2 {
+      font-weight: bold;
+    }
+  }
+
+  &__language {
+    justify-self: flex-end;
+
+    select {
+      width: 18rem;
+    }
+  }
+}

@@ -1,27 +1,25 @@
-import React from 'react'
+import React from 'react';
+import pokeball from '../../assets/pokeballs/Pokeball.svg'
+
+import './HeaderComponent.scss';
 
 const HeaderComponent = () => {
   return (
-    <div style={{
-      alignItems: 'center',
-      backgroundColor: '#DB092B',
-      boxShadow: '0px 5px 20px -10px rgba(0,0,0,0.75)',
-      display: 'flex', 
-      justifyContent: 'space-between', 
-      height: '5rem', 
-      padding: '0 2rem',
-      borderBottom: '7px solid black'
-    }}>
-      <div style={{ justifySelf: 'flex-start', color: 'whitesmoke', fontSize: '2rem', fontWeight: '600', letterSpacing: '3px' }}>
-        POKEDEX
+    <>
+      <div className="header">
+        <div className="header__title">
+          <img src={ pokeball } alt='pokeball'></img>
+          <h2>POKEDEX</h2>
+        </div>
+        {/* <div className="header__language">
+          <select>
+            <option value="spanish"> Español </option>
+            <option value="English"> English </option>
+          </select>
+        </div> */}
       </div>
-      <div style={{ justifySelf: 'flex-end' }}>
-        <select style={{ width: '20rem'}}>
-          <option value="spanish"> Español </option>
-          <option value="English"> English </option>
-        </select>
-      </div>
-    </div>
+      {/* <div className="sub-header"></div> */}
+    </>
   )
 }
 
