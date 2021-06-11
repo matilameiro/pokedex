@@ -7,7 +7,7 @@ import LoadingComponent from '../LoadingComponent/LoadingComponent';
 
 import { getPokemon, getPokemonPage } from '../../services/PokemonService';
 
-import { CANT_PAGES, PAGINATION } from '../../constants/constants';
+import { CANT_PAGES, PAGINATION, CANT_POKEMONS } from '../../constants/constants';
 
 import './PokemonListComponent.scss';
 
@@ -19,17 +19,19 @@ const PokemonListComponent = ( { language }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     let isMounted = true;
     const promises = [];
-    setLoading(true);
+    const OFFSET = page * 5;
+    const PAG = OFFSET + 5 <= CANT_POKEMONS ? PAGINATION : CANT_POKEMONS - OFFSET;
 
-    getPokemonPage(PAGINATION, page).then(({results: pokemons}) => {
+    getPokemonPage(PAG, OFFSET).then(({ results: pokemons }) => {
       if (pokemons) {
         pokemons.forEach( ({ url }) => {          
           promises.push(getPokemon(url));
         });
 
-         Promise.all(promises).then((result) => {
+        Promise.all(promises).then((result) => {
           const pokemons = result.map((data) => {
             const nameFounded = data.names.find(element => element.language.name === language)
             const name = nameFounded ? nameFounded.name : data.name;
@@ -107,4 +109,4 @@ const PokemonListComponent = ( { language }) => {
   )
 }
 
-export default PokemonListComponent;
+export default React.memo(PokemonListComponent);

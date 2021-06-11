@@ -58,6 +58,8 @@
       font-size: 1.5rem;
       font-weight: 500;
       text-transform: uppercase;
+      // -moz-appearance:none; /* Firefox */
+      cursor: pointer;
 
       option {
         color: black;

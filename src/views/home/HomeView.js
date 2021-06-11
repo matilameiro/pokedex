@@ -8,7 +8,7 @@ import './HomeView.scss'
 
 const HomeView = () => {
   const [languages, setLanguages] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [languageSelected, setLanguageSelected] = useState('es');
 
   useEffect(() => {
@@ -16,8 +16,8 @@ const HomeView = () => {
     getLanguages().then(({ results }) => {
       if (results) {
         setLanguages(results);
-        setLoading(false);
       }
+      setLoading(false);
     });
   }, []);
 

@@ -4,7 +4,6 @@ import pokeball from '../../assets/pokeballs/Pokeball.svg'
 import './HeaderComponent.scss';
 
 const HeaderComponent = ({ languages, initialLanguage, change }) => {
-  
   const handleChange = ({ target }) => {
     change(target.value)
   }
