@@ -3,7 +3,12 @@ import pokeball from '../../assets/pokeballs/Pokeball.svg'
 
 import './HeaderComponent.scss';
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ languages, initialLanguage, change }) => {
+  
+  const handleChange = ({ target }) => {
+    change(target.value)
+  }
+  
   return (
     <>
       <div className="header">
@@ -11,12 +16,23 @@ const HeaderComponent = () => {
           <img src={ pokeball } alt='pokeball'></img>
           <h2>POKEDEX</h2>
         </div>
-        {/* <div className="header__language">
-          <select>
-            <option value="spanish"> Español </option>
-            <option value="English"> English </option>
+        <div className="header__language">
+          <select
+            value={initialLanguage}
+            onChange={ handleChange }
+          >
+            {
+              languages.map((language) => (
+                <option 
+                  key={language.name} 
+                  value={language.name}
+                > 
+                  { language.name } 
+                </option>
+              ))
+            }
           </select>
-        </div> */}
+        </div>
       </div>
       {/* <div className="sub-header"></div> */}
     </>

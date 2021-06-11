@@ -1,3 +1,6 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
 .header {
   align-items: center;
   background-color: #DB092B;
@@ -7,6 +10,12 @@
   height: 5rem; 
   padding: 3rem 2rem;
   border-bottom: 7px solid black;
+
+  @include responsive(celular) {
+    flex-direction: column;
+    height: 10rem;
+    // justify-content: center;
+  }
 
   &__title {
     justify-self: flex-start;
@@ -21,18 +30,55 @@
     img {
       height: 10rem;
       width: 10rem;
+
+      @include responsive(celular) {
+        width: 6rem;
+      }
     }
 
     h2 {
       font-weight: bold;
     }
+
+    @include responsive(celular) {
+      align-self: flex-start;
+    }
   }
 
   &__language {
     justify-self: flex-end;
+    width: 20%;
 
     select {
-      width: 18rem;
+      width: 100%;
+      color: white;
+      border: none;
+      border-bottom: 2px solid;
+      background: transparent;
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      option {
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+    
+    @include responsive(tablet) {
+      width: 30%;
+    }
+
+    @include responsive(celular) {
+      width: 40%;
+      margin: .5rem;
+      align-self: flex-end;
     }
   }
 }

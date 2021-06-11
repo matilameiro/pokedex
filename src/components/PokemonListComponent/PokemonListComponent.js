@@ -5,13 +5,13 @@ import ModalComponent from '../ModalComponent/ModalComponent';
 import PokemonDetailsComponent from '../PokemonDetailsComponent/PokemonDetailsComponent';
 import LoadingComponent from '../LoadingComponent/LoadingComponent';
 
-import { getPokemon } from '../../services/PokemonService';
+import { getPokemon, getPokemonPage } from '../../services/PokemonService';
 
-import { CANT_PAGES, CANT_POKEMONS } from '../../constants/constants';
+import { CANT_PAGES, PAGINATION } from '../../constants/constants';
 
 import './PokemonListComponent.scss';
 
-const PokemonListComponent = () => {
+const PokemonListComponent = ( { language }) => {
   const [page, setPage] = useState(0);
   const [pokemonList, setPokemonList] = useState([]);
   const [show, setShow] = useState(false);
@@ -19,30 +19,40 @@ const PokemonListComponent = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
     const promises = [];
-    const start = (page * 5) + 1 > 0 ? (page * 5) + 1 : 1;
-    const finish = start + 5 <= CANT_POKEMONS ? start + 5 : CANT_POKEMONS + 1 ;
     setLoading(true);
 
-    for (let i = start; i < finish ; i++) {
-      promises.push(getPokemon(i));
-    }
+    getPokemonPage(PAGINATION, page).then(({results: pokemons}) => {
+      if (pokemons) {
+        pokemons.forEach( ({ url }) => {          
+          promises.push(getPokemon(url));
+        });
 
-    Promise.all(promises).then((result) => {
-      const pokemons = result.map((data) => {
-        return {
-          id: data.id,
-          name: data.name,
-          image_default: data.sprites.front_default,
-          image_dream_world: data.sprites.other.dream_world.front_default,
-          types: data.types.map((type) => type.type.name),
-          stats: data.stats
-        }
-      });
-        setPokemonList(pokemons);
-        setLoading(false);
-    })
-  }, [page])
+         Promise.all(promises).then((result) => {
+          const pokemons = result.map((data) => {
+            const nameFounded = data.names.find(element => element.language.name === language)
+            const name = nameFounded ? nameFounded.name : data.name;
+
+            return {
+              id: data.id,
+              name: name,
+              image_default: data.sprites.front_default,
+              image_dream_world: data.sprites.other.dream_world.front_default,
+              types: data.types.map((type) => type.type.name),
+              stats: data.stats
+            }
+          });
+          if (isMounted) {
+            setPokemonList(pokemons);
+            setLoading(false);
+          }
+        });
+      }
+    });
+
+    return () => { isMounted = false };
+  }, [page, language])
 
   const closeModalHandler = () => setShow(false);
 
@@ -90,7 +100,7 @@ const PokemonListComponent = () => {
 
       <ModalComponent title="Detalles del pokemon" show={show} close={closeModalHandler}>
         { show && pokemonSelected && 
-          <PokemonDetailsComponent pokemon={pokemonSelected}></PokemonDetailsComponent>
+          <PokemonDetailsComponent pokemon={pokemonSelected} language={language}></PokemonDetailsComponent>
         }
       </ModalComponent>
     </div>
