@@ -5,6 +5,7 @@
   
 
 ### MEJORAS A REALIZAR
+  * Crear oyente en imagen de pokebola para volver a la página cero.
   * Crear un Context para manejar estados globales como por ejemplo el idioma seleccionado.
   * Mejorar soporte para algunos navegadores.
   * Crear componente Select.
