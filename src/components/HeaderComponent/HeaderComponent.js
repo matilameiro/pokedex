@@ -1,5 +1,5 @@
 import React from 'react';
-import pokeball from '../../assets/pokeballs/pokeball.svg'
+import pokeball from '../../assets/pokeball.svg';
 
 import './HeaderComponent.scss';
 
